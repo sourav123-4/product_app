@@ -1,0 +1,10 @@
+.signIn{
+    padding: 20px;
+    margin: 20px;
+}
+.signIn>input{
+    padding: 10px;
+    margin: 5px;
+    border-radius: 5px;
+    font-size:x-large;
+}

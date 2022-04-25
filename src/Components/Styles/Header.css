@@ -1,0 +1,23 @@
+.container{
+    display: flex;
+    justify-content: space-evenly;
+    padding-top: 10px;
+    align-items: center;
+}
+img{
+    border-radius: 15px;
+}
+/* button{
+    border-radius: 5px;
+    font-size: large;
+} */
+h2{
+    font-size:40px;
+    color: rgb(111, 66, 7);
+}
+/* button:hover{
+    cursor: pointer;
+} */
+hr{
+    margin: 20px;
+}

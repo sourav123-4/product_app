@@ -1,0 +1,9 @@
+.product-div{
+    display: grid;
+    grid-template-columns: repeat(6,1fr);
+    grid-template-rows: 200px 200px;
+    grid-gap: 5px;
+}
+.items{
+    /* background-color: aqua; */
+}
