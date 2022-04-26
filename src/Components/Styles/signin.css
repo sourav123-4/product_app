@@ -8,3 +8,10 @@
     border-radius: 5px;
     font-size:x-large;
 }
+.sigin-header{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* justify-content: space-around; */
+
+}

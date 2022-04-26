@@ -1,10 +1,10 @@
 import React from 'react'
-import Header from './Components/Header'
+import Signin from './Components/signin'
 
 function Home() {
   return (
     <div>
-        <Header/>
+        <Signin/>
     </div>
   )
 }

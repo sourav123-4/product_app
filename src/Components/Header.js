@@ -9,12 +9,6 @@ function Header() {
     <div className='container'>
         <Link to="/home"><HomeIcon fontSize='large' color='primary'/></Link>
         <h2>PRODUCT-APP</h2>
-        <Link to="/signin">
-          <Button variant='contained' color='primary'>
-            SignIn
-          </Button>
-        </Link>
-        
     </div>
   )
 }

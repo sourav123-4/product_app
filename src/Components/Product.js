@@ -3,8 +3,20 @@ import { Link } from 'react-router-dom'
 import Header from './Header'
 import './Styles/product.css'
 import { Button, Grid, TextField} from '@material-ui/core'
-function Product({products,setSearch,search}) {
+import { Box } from '@material-ui/core'
+import { InputLabel } from '@material-ui/core'
+import { MenuItem } from '@material-ui/core'
+import { FormControl } from '@material-ui/core'
+import { Select } from '@material-ui/core'
+import Avatar from '@mui/material/Avatar';
+import Stack from '@mui/material/Stack';
+import { deepOrange, deepPurple } from '@mui/material/colors';
+function Product({products,setSearch,search,password}) {
   const [page,setPage]=useState(0)
+  const [price, setPrice] =useState('')
+  const handleChange = (event) => {
+    setPrice(event.target.value)
+  }
   function prevpage(){
     if(page==1){
       setPage(item=>item-1)
@@ -17,15 +29,37 @@ function Product({products,setSearch,search}) {
 }
   return (
     <div className='container-div'>
+      <div className='product-header'>
         <Header/>
+        <Stack direction="row" spacing={2}>
+          <Avatar sx={{ bgcolor: deepOrange[500] }}>{password[0]}</Avatar>
+        </Stack>
+        </div>
         <hr/>
-        <TextField id="standard-basic" label="Search" variant="outlined" onChange={e=>setSearch(e.target.value)}/>
+        <TextField id="standard-basic" label="Search" variant="standard" onChange={e=>setSearch(e.target.value)}/>
+        <span width="5px"></span> 
+        <FormControl sx={{ m:1, minWidth: 20 }}>
+          <InputLabel id="demo-simple-select-label">Price</InputLabel>
+          <Select
+            labelId="demo-simple-select-label"
+            id="demo-simple-select"
+            value={price}
+            label="Price"
+            onChange={handleChange}
+          >
+            <MenuItem value={100}>0-100</MenuItem>
+            <MenuItem value={200}>0-200</MenuItem>
+            <MenuItem value={500}>0-500</MenuItem>
+            <MenuItem value={1000}>0-1000</MenuItem>
+          </Select>
+        </FormControl>
         <br></br><br></br>
+        {console.log(price)}
         <Grid container spacing={3}>
         {products.filter((val)=>{
-          if(search==""){
+          if(search=="" && !price){
             return val
-          }else if(val.title.toLowerCase().includes(search.toLowerCase())){
+          }else if(val.title.toLowerCase().includes(search.toLowerCase()) && val.price<=price){
             return val
           }
         })
@@ -36,6 +70,7 @@ function Product({products,setSearch,search}) {
                   <img src={item.image} alt="img" width="200px" height="200px"/>
                 </Link>
                 <p>{item.title}</p>
+                <p>{item.price}</p>
                 </Grid>
           }else if(item.id>10 && page==1){
             return <Grid item xs={4} className="items">
@@ -43,6 +78,7 @@ function Product({products,setSearch,search}) {
               <img src={item.image} alt="img" width="200px" height="200px"/>
             </Link>
             <p>{item.title}</p>
+            <p>{item.price}</p>
             </Grid>
           }
         })}
